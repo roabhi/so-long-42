@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:36:10 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/13 18:39:35 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:47:29 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	open_and_read_map(t_instance *game, char *mapsrc)
 	if (fd < 0)
 		return (0);
 	line = get_next_line(fd);
-	//printf("Antes if\n");
 	if (line)
 	{
 		game->map_x = (int)ft_strlenn(line, '\n') - 1;
@@ -106,7 +105,6 @@ int	open_and_read_map(t_instance *game, char *mapsrc)
 		{
 			game->map_y++;
 			game->map_raw = ft_strjoin(game->map_raw, line);
-			//printf("while\n");
 			free(line);
 			line = get_next_line(fd);
 		}
