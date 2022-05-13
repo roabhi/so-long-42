@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:36:10 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/12 21:38:50 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:39:35 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	init_map_matrix(t_instance *game)
 	if (!game->map)
 		exit (0);
 	game->map[game->map_x] = NULL;
-	while (game->map[count])
+	while (count < game->map_x)
 	{
 		game->map[count] = malloc(sizeof(char) * ((game->map_y + 1)));
 		if (!game->map[count])
