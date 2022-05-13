@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:36:10 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/13 18:47:29 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:02:27 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ int	open_and_read_map(t_instance *game, char *mapsrc)
 	return (1);
 }
 
-
 char	map(t_instance *game, char *mapsrc)
 {
 	game->map_x = 0;
@@ -127,8 +126,6 @@ char	map(t_instance *game, char *mapsrc)
 	//Aqui irian los checqueos previos para saber si el mapa es correcto:
 	//ejempl: Mapa contiene personaje y exit
 	//....
-
-	//printf("Map horizontal size is %d and vertical size is %d, so total size is %d", game->map_cols, game->map_rows, game->map_cols * game->map_rows);
 	init_map_matrix(game);
 	fill_map_matrix(game);
 	return (0);

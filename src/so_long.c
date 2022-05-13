@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 18:43:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/11 18:04:02 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:59:41 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ int	main(int i, char **params)
 	t_instance	game;
 
 	check_args(i, params);
-	//game.vars.mlx = mlx_init(); //This generates memory allocation
+	game.vars.mlx = mlx_init(); //This generates memory allocation
 	if (!setup(&game, params[1]))
 		return (-1);
-	return (0);	
+	game.vars.win = mlx_new_window(game.vars.mlx, 640, 360, "MATA NEURONAS");
+	mlx_loop(game.vars.mlx);
+	return (0);
 }
