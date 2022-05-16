@@ -6,6 +6,8 @@ SRC =	src/so_long.c \
 		src/setup.c \
 		src/map.c \
 		src/assets.c \
+		src/display.c \
+		src/interactive.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c 
 

@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:23:57 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/14 19:02:37 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:12:27 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ char	setup(t_instance *game, char *mapsrc)
 	//map(game, mapsrc);	
 	if (!assets(game))
 		return (0);	
-	//assets(game);
-
+	
 	//if (!ft_readmap(game, mappath))
 	//{
 //		ft_putstr_fd("Error\n[FAILED TO LOAD MAP]\n", 2);

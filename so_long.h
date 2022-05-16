@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 18:31:02 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/14 19:21:17 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:58:54 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ typedef struct s_instance
 	int			map_x;
 }	t_instance;
 
+enum	keys { up = 13, down = 1, left = 0, right = 2, esc = 53};
+
 char	setup(t_instance *game, char *mapsrc);
 char	map(t_instance *game, char *mapsrc);
 char	assets(t_instance *game);
+char	display(t_instance *game);
+int	interactive(int keycode, t_instance *game);
 
 #endif
