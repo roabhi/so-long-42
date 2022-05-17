@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:55:15 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/16 20:29:22 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:00:59 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@ char    display(t_instance *game)
 				// printf("printa wall para %c en las coordernadas x:%d y:%d \n", game->map[count_x][count_y], count_x * 50, count_y * 50);
             }else if (game->map[count_x][count_y] == 'C')
             {
-                mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->imgs[2].img_ptr, count_x * 50, count_y * 50);
+                game->player.coins++;
+				mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->imgs[2].img_ptr, count_x * 50, count_y * 50);
 				// printf("printa collectable para %c en las coordernadas x:%d y:%d \n", game->map[count_x][count_y], count_x * 50, count_y * 50);
             }else if (game->map[count_x][count_y] == 'P')
             {
                 mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->imgs[3].img_ptr, count_x * 50, count_y * 50);
-                game->player.pos[0] = count_x * 50;
-                game->player.pos[1] = count_y * 50;                
+                game->player.pos_x = count_x * 50;
+                game->player.pos_y = count_y * 50;                
 				// printf("printa hero para %c en las coordernadas x:%d y:%d \n", game->map[count_x][count_y], count_x * 50, count_y * 50);
             }else if (game->map[count_x][count_y] == 'E')
             {
@@ -52,8 +53,5 @@ char    display(t_instance *game)
 		count_x = 0;
 		count_y++;
 	}
-
-    
-
-    return (1);
+	return (1);
 }

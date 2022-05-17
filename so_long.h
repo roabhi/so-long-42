@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 18:31:02 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/16 19:58:54 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:00:39 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct s_player
 {
 	unsigned int	coins;
 	unsigned int	steps;
-	int				pos[2];
+	//int				pos[2];
+	int				pos_x;
+	int				pos_y;
 	char			finished;
 }	t_player;
 
