@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:30:47 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/17 18:05:30 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:50:06 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,35 @@
 
 void validate_move(t_instance *game, int playerNextPosX, int playerNextPosY)   
 {
-    
-    // write(1, "player x es:", 12);
-    // ft_putnbr_fd(game->player.pos_x / 50, 1);
-    // write(1, "\n", 1);
-    // write(1, "player y es:", 12);
-    // ft_putnbr_fd(game->player.pos_y / 50, 1);    
-        
-    // write(1, "voy al char\n", 13);
-    
-    // write(1, &game->map[playerNextPosX][playerNextPosY], 1);     
-    // write(1, "\n", 1);
-    if (game->map[playerNextPosX][playerNextPosY] != '1')
+    if (game->map[playerNextPosX][playerNextPosY] != '1' && game->player.finished != '1')
     {
-        // if (game->map[playerNextPosX][playerNextPosY] == '0')
-        // {
-        //     game->map[playerNextPosX][playerNextPosY] = 'P';
-        //  }else if (game->map[playerNextPosX][playerNextPosY] == 'C')
-        // {
-        //     write(1, "coin\n", 5);
-        // }else if (game->map[playerNextPosX][playerNextPosY] == 'E')
-        // {
-        //     write(1, "exit\n", 5);
-        // }
-        // game->map[playerNextPosX][playerNextPosY] = 'H';
-        // game->map[game->player.pos_x][game->player.pos_y] = '0';
-        // game->player.pos_x = playerNextPosX;
-        // game->player.pos_y = playerNextPosY;  
-
+        game->player.steps++;
+        if (game->map[playerNextPosX][playerNextPosY] == 'C')
+        {
+            if (game->player.coins > 0)
+                game->player.coins--;                     
+        }else if (game->map[playerNextPosX][playerNextPosY] == 'E')
+        {
+            if (game->player.coins == 0)
+            {
+                write(1, "\nWIN", 4);
+                write(1, "\nYou made these steps:",23);
+                ft_putnbr_fd(game->player.steps, 1);                
+            }else
+            {
+                write(1, "\nLOST", 5);
+                write(1, "\nYou made these steps:", 23);
+                ft_putnbr_fd(game->player.steps, 1);
+            }
+            game->player.finished = '1';
+        }
         mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->imgs[3].img_ptr, playerNextPosX * 50, playerNextPosY * 50);
-        mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->imgs[0].img_ptr, game->player.pos_x * 50, game->player.pos_y * 50);
-        game->player.pos_x = playerNextPosX;
-        game->player.pos_y = playerNextPosY; 
-        
+        mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->imgs[0].img_ptr, game->player.pos_x, game->player.pos_y);
+        game->player.pos_x = playerNextPosX * 50;
+        game->player.pos_y = playerNextPosY * 50;
     }   
 
-    static int count_x = 0;
-	static int count_y = 0;
-
-	while (count_y < (int)game->map_y)
-	{
-		while (count_x < (int)game->map_x)
-		{
-			write(1, &game->map[count_x][count_y], 1);
-			count_x++;
-		}
-		count_x = 0;
-		count_y++;
-		write(1, "\n", 1);
-	} 
+   
  
 }
 
