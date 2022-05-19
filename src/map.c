@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:36:10 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/14 18:59:29 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:07:28 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,17 @@ char	map(t_instance *game, char *mapsrc)
 	game->map_y = 0;
 	if (!open_and_read_map(game, mapsrc))
 	{
-		printf("error parseando el mapa\n");
+		ft_putstr_fd("Error\n[NO SE PUDO LEER EL MAPA]\n", 2);
 		return (0);
 	}
 	//Aqui irian los checqueos previos para saber si el mapa es correcto:
 	//ejempl: Mapa contiene personaje y exit
 	//....
+	if (!path_is_ok(mapsrc))
+	{
+		ft_putstr_fd("Error\n[NO SE PUDO LEER EL MAPA]\n", 2);
+		return (0);
+	}
 	init_map_matrix(game);
 	fill_map_matrix(game);
 	return (1);

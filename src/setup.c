@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:23:57 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/18 18:47:48 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:51:42 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	setup(t_instance *game, char *mapsrc)
 {
 	if (!map(game, mapsrc))
 		return (0);
-	//map(game, mapsrc);	
 	if (!assets(game))
 		return (0);	
 	game->player.steps = 0;

@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 18:31:02 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/18 18:52:13 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:34:08 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_vars
 	void	*win;
 }	t_vars;
 
-
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -43,7 +42,6 @@ typedef struct s_player
 {
 	unsigned int	coins;
 	unsigned int	steps;
-	//int				pos[2];
 	int				pos_x;
 	int				pos_y;
 	char			finished;
@@ -67,6 +65,6 @@ char	setup(t_instance *game, char *mapsrc);
 char	map(t_instance *game, char *mapsrc);
 char	assets(t_instance *game);
 char	display(t_instance *game);
-int	interactive(int keycode, t_instance *game);
+int		interactive(int keycode, t_instance *game);
 
 #endif
