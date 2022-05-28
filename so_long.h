@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 18:31:02 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/18 19:34:08 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:18:27 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-# include "libft/libft.h"
-# include "minilibx/mlx.h"
+# include "libft.h"
+# include "mlx.h"
 
 typedef struct s_vars
 {
@@ -59,12 +59,15 @@ typedef struct s_instance
 	int			map_x;
 }	t_instance;
 
-enum	keys { up = 13, down = 1, left = 0, right = 2, esc = 53};
+enum	e_keys { up = 13, down = 1, left = 0, right = 2, esc = 53};
 
 char	setup(t_instance *game, char *mapsrc);
 char	map(t_instance *game, char *mapsrc);
+int		map_validator(t_instance *game);
 char	assets(t_instance *game);
 char	display(t_instance *game);
 int		interactive(int keycode, t_instance *game);
+int		destroy(t_instance *game);
+void	errors(char *msg);
 
 #endif

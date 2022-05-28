@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:55:15 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/19 19:51:26 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:09:09 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,7 @@ int	check_top_bottom(t_instance *game)
 			if (count_y == 0 || count_y == (game->map_y - 1))
 			{
 				if (game->map[count_x][count_y] != '1')
-				{
-					ft_putstr_fd("\n Map bottom or top have errors\n", 1);
-					//write(1, &game->map[count_x][count_y], 1);
-					return (0);
-				}	
+					errors("\nERROR\nMap not rectangle");
 			}
 			count_x++;
 		}
@@ -55,11 +51,7 @@ int	check_sides(t_instance *game)
 			if (count_x == 0 || count_x == (game->map_x - 1))
 			{
 				if (game->map[count_x][count_y] != '1')
-				{
-					ft_putstr_fd("\n Map sides have errors\n", 1);
-					//write(1, &game->map[count_x][count_y], 1);
-					return (0);
-				}				
+					errors("\nError\nMap not rectangle");
 			}	
 			count_x++;
 		}		
@@ -104,20 +96,14 @@ char	display(t_instance *game)
 
 	count_x = 0;
 	count_y = 0;
-	write(1, "\n", 1);
-	if (!check_sides(game))
-		return (0);
-	if (!check_top_bottom(game))
-		return (0);
+	check_sides(game);
+	check_top_bottom(game);
 	while (count_y < (int)game->map_y)
 	{
 		while (count_x < (int)game->map_x)
 		{
 			if (!paint_map(game, count_x, count_y))
-			{
-				write(1, "\nERROR: \nMaps contains unknown char", 37);
-				return (0);
-			}				
+				errors("\nERROR: \nMaps contains unknown char");
 			count_x++;
 		}
 		count_x = 0;

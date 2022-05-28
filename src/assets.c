@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:44:31 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/19 16:09:44 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:44:08 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,20 @@ char    *get_img_path(int index, char *path)
 char   loadImg(t_instance *game, int index)
 {
     int     height;
-	int     width;
-    char    *path;  
-
+    int     width;
+    char    *path;
+    
+    path = NULL;
 	game->imgs[index].img_ptr = mlx_xpm_file_to_image(game->vars.mlx,
             get_img_path(index, path), &width, &height);
     if(!game->imgs[index].img_ptr)
-    {
-        ft_putstr_fd("Error loading image \n",2);
-		return (-1);
-    }
-	game->imgs[index].addr = (int *)mlx_get_data_addr(game->imgs[index].img_ptr, 
-        &game->imgs[index].bits_per_pixel, &game->imgs[index].line_length, 
-        &game->imgs[index].endian);
+        errors("Error loading image \n");
+	game->imgs[index].addr = 
+            (int *)mlx_get_data_addr(game->imgs[index].img_ptr,
+            &game->imgs[index].bits_per_pixel, &game->imgs[index].line_length,
+            &game->imgs[index].endian);
     if(!game->imgs[index].addr)
-    {
-        ft_putstr_fd("Error loading image \n",2);
-		return (-1);
-    }    
+        errors("Error loading image \n");
     return (1);
 }
 

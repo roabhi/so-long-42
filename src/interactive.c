@@ -6,13 +6,13 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:30:47 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/19 16:05:32 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:05:05 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void end_game(t_instance *game, int i)
+void    end_game(t_instance *game, int i)
 {
     if (i == 1)
         write(1, "\nWIN", 4);
@@ -37,7 +37,7 @@ void validate_move(t_instance *game, int playerNextPosX, int playerNextPosY)
                 game->player.coins--;                     
         }else if (game->map[playerNextPosX][playerNextPosY] == 'E')
         {
-            if (game->player.coins == 0)
+            if (game->player.coins <= 0)
                 end_game(game, 1); 
             else
                 end_game(game, 0);
@@ -69,7 +69,9 @@ int interactive(int keycode, t_instance *game)
     else if (keycode == right)
             playerNextPosX++;
     else if (keycode == esc)
-            write(1, "esc\n", 4);
+            destroy(game);
+    else 
+        return (0);
     validate_move(game, playerNextPosX, playerNextPosY);
     return (1);
 }

@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 20:23:57 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/28 17:44:30 by rabril-h         ###   ########.fr       */
+/*   Created: 2022/05/28 14:03:35 by rabril-h          #+#    #+#             */
+/*   Updated: 2022/05/28 14:08:31 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-char	setup(t_instance *game, char *mapsrc)
+void    errors(char *msg)
 {
-	map(game, mapsrc);
-	assets(game);
-	game->player.steps = 0;
-	game->player.finished = '0';
-	return (1);
+    ft_putstr_fd(msg, 2);
+    exit(-1);
 }

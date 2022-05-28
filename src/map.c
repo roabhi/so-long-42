@@ -6,26 +6,19 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:36:10 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/19 16:07:28 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:40:05 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include "../get_next_line/get_next_line.h"
 
-char	path_is_ok(char *path)
-{
-	if (ft_strlen(path) < 4)
-		return (0);
-	return (1);
-}
-
-void fill_map_matrix(t_instance *game)
+void	fill_map_matrix(t_instance *game)
 {
 	int	count_x;
 	int	count_y;
 	int	counter;
-	
+
 	counter = 0;
 	count_x = 0;
 	count_y = 0;
@@ -42,36 +35,22 @@ void fill_map_matrix(t_instance *game)
 		count_x = 0;
 		count_y++;
 	}
-	// count_x = 0;
-	// count_y = 0;
-
-	// while (count_y < (int)game->map_y)
-	// {
-	// 	while (count_x < (int)game->map_x)
-	// 	{
-	// 		write(1, &game->map[count_x][count_y], 1);
-	// 		count_x++;
-	// 	}
-	// 	count_x = 0;
-	// 	count_y++;
-	// 	write(1, "\n", 1);
-	// }	
 }
 
 int	init_map_matrix(t_instance *game)
 {
 	int	count;
-	
+
 	count = 0;
 	game->map = (char **)malloc(sizeof(char *) * ((game->map_x + 1)));
 	if (!game->map)
-		exit (EXIT_FAILURE);
+		errors("Error\nCould not allocate memory\n");
 	game->map[game->map_x] = NULL;
 	while (count < game->map_x)
 	{
 		game->map[count] = malloc(sizeof(char) * ((game->map_y + 1)));
 		if (!game->map[count])
-			exit (EXIT_FAILURE);
+			errors("Error\nCould not allocate memory\n");
 		game->map[count][game->map_y] = '\0';
 		count++;
 	}
@@ -82,12 +61,10 @@ int	open_and_read_map(t_instance *game, char *mapsrc)
 {
 	char	*line;
 	int		fd;
-	
-	if (!path_is_ok(mapsrc))
-		return (0);
+
 	fd = open(mapsrc, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		errors("Error\nCould not read map\n");
 	line = get_next_line(fd);
 	if (line)
 	{
@@ -110,19 +87,9 @@ char	map(t_instance *game, char *mapsrc)
 	game->map_x = 0;
 	game->map_y = 0;
 	if (!open_and_read_map(game, mapsrc))
-	{
-		ft_putstr_fd("Error\n[NO SE PUDO LEER EL MAPA]\n", 2);
-		return (0);
-	}
-	//Aqui irian los checqueos previos para saber si el mapa es correcto:
-	//ejempl: Mapa contiene personaje y exit
-	//....
-	if (!path_is_ok(mapsrc))
-	{
-		ft_putstr_fd("Error\n[NO SE PUDO LEER EL MAPA]\n", 2);
-		return (0);
-	}
+		errors("Error\nCould not read map\n");
 	init_map_matrix(game);
 	fill_map_matrix(game);
+	map_validator(game);
 	return (1);
 }

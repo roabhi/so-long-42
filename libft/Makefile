@@ -1,4 +1,5 @@
 NAME = libft.a
+CC = gcc
 
 SRC = ft_atoi.c \
 		ft_bzero.c \
@@ -49,31 +50,31 @@ OBJ = $(SRC:%.c=%.o)
 
 OBJBONUS = $(SRCBONUS:%.c=%.o)
 
-FLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
-.c.o: ${CC} ${FLAGS} -I libft.h -c ${<:.c =.o}
 
 all: $(NAME)
 
-$(NAME): ${OBJ} 
-	@ar rcs $(NAME) $(OBJ)
+$(NAME): ${OBJ} libft.h
+	ar rcs $(NAME) $(OBJ)
 	ranlib ${NAME}
 
 clean:
-	@rm -f $(OBJ) $(OBJBONUS)
+	$(RM) $(OBJ) $(OBJBONUS)
 	@echo "OBJ deleted"
+	$(RM) bonus
 
 fclean: clean
-	@rm -f $(NAME)
+	$(RM) $(NAME)
 	@echo "$(NAME) deleted"
 
 bonus:  $(OBJ) $(OBJBONUS)
 		@ar rcs $(NAME) $(OBJ) $(OBJBONUS)
 		ranlib ${NAME}
+		touch bonus
 
 re: fclean all
 
 
 .PHONY: all clean fclean re bonus
-
 
