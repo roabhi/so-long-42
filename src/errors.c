@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/28 14:03:35 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/28 14:08:31 by rabril-h         ###   ########.fr       */
+/*   Created: 2022/06/02 16:27:56 by rabril-h          #+#    #+#             */
+/*   Updated: 2022/06/02 17:12:20 by rabril-h         ###   ########.bcn      */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void    errors(char *msg)
+void	errors(char *msg)
 {
-    ft_putstr_fd(msg, 2);
-    exit(-1);
+	ft_putstr_fd(msg, 2);
+	exit(-1);
 }

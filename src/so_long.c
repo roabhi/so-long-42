@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 18:43:20 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/28 17:48:12 by rabril-h         ###   ########.fr       */
+/*   Created: 2022/06/02 16:21:49 by rabril-h          #+#    #+#             */
+/*   Updated: 2022/06/02 17:10:12 by rabril-h         ###   ########.bcn      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,11 @@ int	main(int i, char **params)
 {
 	t_instance	game;
 
-	//temporary code for debugging leaks - REMOVE BEFORE UPLOAD
-
-	pid_t				my_pid;
-
-	my_pid = getpid();
-	// ft_putstr_fd("El PID es: ", 1);
-	// ft_putnbr_fd(my_pid, 1);	
-	
 	check_args(i, params);
-	// if (!setup(&game, params[1]))
-	// 	return (-1);
 	setup(&game, params[1]);
 	game.vars.mlx = mlx_init();
 	game.vars.win = mlx_new_window(game.vars.mlx,
 			game.map_x * 50, game.map_y * 50, "I AM A PIRATE");
-	// if (!display(&game))
-	// 	return (-1);
 	display(&game);
 	mlx_key_hook (game.vars.win, &interactive, &game);
 	mlx_hook(game.vars.win, 17, 0, &destroy, &game);
