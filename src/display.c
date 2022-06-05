@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:55:15 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/05/28 18:09:09 by rabril-h         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:00:21 by rabril-h         ###   ########.bcn      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ char	display(t_instance *game)
 	count_y = 0;
 	check_sides(game);
 	check_top_bottom(game);
+	game->player.coins = 0;
 	while (count_y < (int)game->map_y)
 	{
 		while (count_x < (int)game->map_x)

@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barc...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:01:52 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/06/02 17:10:53 by rabril-h         ###   ########.bcn      */
+/*   Updated: 2022/06/05 18:10:19 by rabril-h         ###   ########.bcn      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void	validate_move(t_instance *game, int pnpx, int pnpy)
 		if (game->map[pnpx][pnpy] == 'C')
 		{
 			if (game->player.coins > 0)
+			{
 				game->player.coins--;
+				game->map[pnpx][pnpy] = '0';
+			}			
 		}
 		else if (game->map[pnpx][pnpy] == 'E')
 		{
