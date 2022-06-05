@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:55:15 by rabril-h          #+#    #+#             */
-/*   Updated: 2022/06/05 18:00:21 by rabril-h         ###   ########.bcn      */
+/*   Updated: 2022/06/05 19:32:28 by rabril-h         ###   ########.bcn      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_top_bottom(t_instance *game)
 			if (count_y == 0 || count_y == (game->map_y - 1))
 			{
 				if (game->map[count_x][count_y] != '1')
-					errors("\nERROR\nMap not rectangle");
+					errors("\nERROR\nMap not rectangle\n");
 			}
 			count_x++;
 		}
@@ -51,7 +51,7 @@ int	check_sides(t_instance *game)
 			if (count_x == 0 || count_x == (game->map_x - 1))
 			{
 				if (game->map[count_x][count_y] != '1')
-					errors("\nError\nMap not rectangle");
+					errors("\nError\nMap not rectangle\n");
 			}	
 			count_x++;
 		}		
@@ -104,7 +104,7 @@ char	display(t_instance *game)
 		while (count_x < (int)game->map_x)
 		{
 			if (!paint_map(game, count_x, count_y))
-				errors("\nERROR: \nMaps contains unknown char");
+				errors("\nERROR: \nMaps contains unknown char\n");
 			count_x++;
 		}
 		count_x = 0;
